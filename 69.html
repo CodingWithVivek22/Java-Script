@@ -1,0 +1,77 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Controlled Counter Game</title>
+
+    <style>
+        body {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Keyboard Controlled Counter Game</h1>
+
+    <p>Press A to increase, D to decrease, S to reset</p>
+    <h2>0</h2>
+
+    <div>
+        <button>Enable Controls</button>
+    </div>
+
+    <script>
+
+        let flag = 0;   // disable
+        let count = 0;
+
+        let btn = document.querySelector("button");
+        let update = document.querySelector("h2");
+
+        function updated() {
+
+
+            flag = 1 - flag;
+            if (flag == 1) {
+                btn.textContent = "Disable Controls";
+            }
+            else {
+                btn.textContent = "Enable Controls";
+            }
+        }
+        btn.addEventListener("click", updated);
+
+        function ok(event) {
+
+            if (flag == 0) {
+                return;
+            }
+
+            if (event.key === "a") {
+                count += 1;
+            }
+
+            else if (event.key === "d") {
+                count -= 1;
+            }
+
+            else if (event.key === "s") {
+
+                count = 0;
+            }
+
+            update.textContent = count;
+        }
+
+        document.addEventListener("keydown", ok);
+    </script>
+</body>
+
+</html>
