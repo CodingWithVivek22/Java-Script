@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Changer</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body class="body">
+
+    <div class="main-container">
+        <h1>Time Changer</h1>
+
+        <p>Click Button to change the Theme.</p>
+
+        <button class="change">toggle theme</button>
+    </div>
+
+    <script>
+        let change = document.querySelector(".change");
+
+        let body = document.querySelector(".body");
+
+        console.log(body);
+
+        function changefun() {
+
+            if (body.style.backgroundColor === "green") {
+
+                body.style.backgroundColor = "blue";
+            }
+            else {
+                body.style.backgroundColor = "green";
+            }
+        }
+
+        change.addEventListener("click", changefun);
+    </script>
+</body>
+
+</html>
