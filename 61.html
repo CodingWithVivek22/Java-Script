@@ -1,0 +1,34 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <h1>CreateElement</h1>
+    </div>
+    <script>
+
+        // create a new empty <p> tag
+        let newPara = document.createElement("div");
+        console.log(newPara);
+
+        // assign some text insie <p> tag
+        newPara.innerText = "this is the use of create element";
+        console.log(newPara.innerText);
+
+        // append the <p> tag to list
+        let body = document.querySelector("body");
+
+        // 
+        body.append(newPara);
+
+
+    </script>
+</body>
+
+</html>
