@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            height: 40px;
+            width: 180px;
+        }
+
+        body>div {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button>Open Modal</button>
+
+    <script>
+
+        let Modal = document.querySelector("button");
+
+        let box = document.createElement("div");
+
+
+        Modal.addEventListener("click", () => {
+
+            document.body.style.backgroundColor = "grey";
+
+            box.innerHTML = `
+        <h1>Welcome!</h1>
+        <p>This is simple modal.</p>
+        <a href = ""><button id="box2">ok</button>
+    `;
+
+            document.body.append(box);
+
+            let okBtn = document.querySelector("#box2");
+
+            okBtn.addEventListener("click", () => {
+                box.remove();
+            })
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    box.remove();
+                    document.body.style.backgroundColor = "white";
+                }
+            })
+        });
+
+    </script>
+</body>
+
+</html>
