@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+
+    <h1>CreateElement</h1>
+
+    <script>
+
+        /*
+            Task:
+            0. Create a new <div> tag, give it class = "list"
+            1. Create a new <p> tag
+            2. Add some inner text inside
+            3. Append <p> tag inside div with class = "list"
+            4. Append <div> with class = "list" to the <body>
+        */
+
+        // Step 0: Create a div
+        const div = document.createElement("div");
+        div.className = "list";
+
+        // Step 1: Create a paragraph
+        const p = document.createElement("p");
+
+        // Step 2: Add text
+        p.innerText = "Hello! This paragraph was created using JavaScript.";
+
+        // Step 3: Append p inside div
+        div.appendChild(p);
+
+        // Step 4: Append div to body
+        document.body.appendChild(div);
+
+    </script>
+
+</body>
+
+</html>
