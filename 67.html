@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            padding: 8px 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            outline: none;
+            width: 180px;
+        }
+
+        button.action-btn {
+            padding: 8px 12px;
+            font-size: 13px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        button.action-btn:hover {
+            background-color: #e6e6e6;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        li {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>To-Do List Builder</h1>
+
+    <div class="controls">
+        <input type="text" id="taskInput" placeholder="Enter Task">
+        <button class="action-btn" onclick="addTask()">Add</button>
+        <button class="action-btn" onclick="duplicateLast()">Duplicate Last</button>
+        <button class="action-btn" onclick="insertAtTop()">Insert at Top</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+
+        function createListItem(text) {
+            const li = document.createElement('li');
+            li.innerHTML = `${text} <button class="delete-btn" onclick="deleteTask(this)">x</button>`;
+            return li;
+        }
+
+        function addTask() {
+            const text = taskInput.value.trim();
+            if (text !== '') {
+                taskList.appendChild(createListItem(text));
+                taskInput.value = '';
+            }
+        }
+
+        function duplicateLast() {
+            const lastItem = taskList.lastElementChild;
+            if (lastItem) {
+                const text = lastItem.childNodes[0].textContent.trim();
+                taskList.appendChild(createListItem(text));
+            }
+        }
+
+        function insertAtTop() {
+            const text = taskInput.value.trim();
+            if (text !== '') {
+                taskList.insertBefore(createListItem(text), taskList.firstChild);
+                taskInput.value = '';
+            }
+        }
+
+        function deleteTask(button) {
+            button.parentElement.remove();
+        }
+    </script>
+
+</body>
+
+</html>
