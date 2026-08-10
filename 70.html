@@ -1,0 +1,82 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Event Basic</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(98, 139, 235);
+            height: 300px;
+            width: 500px;
+        }
+
+        .box.hover {
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mouse Events</h1>
+
+    <div class="box">
+        <p>move, click or db on me !</p>
+    </div>
+
+    <p id="statusText">Status : No event yet</p>
+    <p id="cordinates">Cordinates : -</p>
+
+    <script>
+        let box = document.querySelector(".box");
+        let statusText = document.querySelector("#statusText");
+        let cordinates = document.querySelector("#cordinates");
+
+        box.addEventListener("mousemove", (event) => {
+            box.classList.add("hover");
+            statusText.textContent = "Status : mouse hover";
+            cordinates.textContent = `coordinates : x: ${event.clientX}, y: ${event.clientY}`;
+
+        })
+
+        box.addEventListener("mouseleave", (event) => {
+
+            box.classList.toggle("hover");
+            statusText.textContent = "Status : mouse left the box";
+
+            cordinates.textContent = `coordinates : x: , y: `;
+        })
+
+        box.addEventListener("click", (event) => {
+            if (box.style.backgroundColor === "orange") {
+                box.style.backgroundColor = "cornflowerblue";
+            }
+
+            else {
+                box.style.backgroundColor = "orange";
+            }
+        })
+
+        box.addEventListener("dblclick", (event) => {
+
+            statusText.textContent = "Status : double clicked";
+            box.style.backgroundColor = "";
+            box.classList.remove("hover");
+            cordinates.textContent = "Coordinate : -";
+        })
+    </script>
+</body>
+
+</html>
