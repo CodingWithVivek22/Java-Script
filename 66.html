@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+
+        }
+
+        .main-container {
+            width: 600px;
+            margin: auto;
+
+            background-color: rgb(135, 134, 133);
+
+            border-radius: 20px;
+        }
+
+        .faq {
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+
+            cursor: pointer;
+        }
+
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .answer {
+
+            background-color: rgb(2, 2, 2);
+
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Frequently Asked Questions</h1>
+    <p>Pay once, build better websites faster.</p>
+
+    <div class="main-container">
+
+        <div class="faq">
+            <p class="question">What does GitHub Copilot do?</p>
+
+            <p class="answer">
+                GitHub Copilot helps developers write code faster by giving
+                suggestions, explaining code, and answering coding questions.
+            </p>
+        </div>
+
+    </div>
+
+
+    <script>
+        let faq = document.querySelector(".faq");
+        let answer = document.querySelector(".answer");
+
+        function faqfun() {
+
+            if (answer.style.display == "block") {
+                answer.style.display = "none";
+            }
+            else {
+                answer.style.display = "block";
+            }
+
+        }
+        faq.addEventListener("click", faqfun);
+    </script>
+
+</body>
+
+</html>
