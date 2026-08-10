@@ -1,0 +1,111 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+
+    <style>
+        body {
+            background-color: grey;
+        }
+
+        .container {
+            display: flex;
+
+            justify-content: space-between;
+            gap: 20px;
+
+        }
+
+        .container div {
+            background-color: bisque;
+            padding: 20px;
+
+            border-radius: 10px;
+            cursor: pointer;
+
+            transition: transform 0.2s;
+        }
+
+        .container div:hover {
+            transform: translateY(-5px);
+        }
+
+        .price {
+            color: blue;
+        }
+
+        img {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Card</h1>
+    <div class="container">
+
+    </div>
+    <script>
+        const items = [
+
+            {
+                name: "Laptop",
+                brand: "Dell",
+                price: "₹65,000",
+                category: "Electronics"
+            },
+
+            {
+                name: "iPhone",
+                brand: "Apple",
+                price: "₹80,000",
+                category: "Mobile"
+            },
+
+            {
+                name: "Shoes",
+                brand: "Nike",
+                price: "₹4,000",
+                category: "Fashion"
+            },
+
+            {
+                name: "Headphones",
+                brand: "Sony",
+                price: "₹5,500",
+                category: "Electronics"
+            },
+
+            {
+                name: "Watch",
+                brand: "Titan",
+                price: "₹3,500",
+                category: "Accessories"
+            }
+
+        ];
+
+        let container = document.querySelector(".container")
+
+        items.map((items) => {
+
+            let card = document.createElement("div");
+
+            card.innerHTML = `
+
+            <img src = "data:image/jpeg;base64,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">
+                <h2>${items.name}</h2>
+                <p>Brand : ${items.brand}</p>
+                <p class="price">Price : ${items.price}</p>
+                <p>Category : ${items.category}</p>
+            `
+            container.append(card)
+        });
+
+    </script>
+</body>
+
+</html>
