@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Text Manipulator</title>
+
+    <style>
+        body {
+
+            background-color: rgba(224, 219, 219, 0.584);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .main-container {
+
+            background-color: white;
+            padding: 30px;
+            border: 1px solid rgba(101, 99, 99, 0.342);
+            border-radius: 10px;
+
+        }
+
+        .input {
+            height: 30px;
+            width: 400px;
+        }
+
+        button {
+            height: 30px;
+            width: 200px;
+
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <h1>Interactive Text Manipulatior</h1>
+
+        <input placeholder="Type Something..." class="input">
+
+        <p>You text will appear here.</p>
+
+
+        <div>
+            <button class="show">Show Text</button>
+
+
+            <button class="clear">Clear</button>
+
+        </div>
+
+        <div>
+
+            <button class="upper">Uppercase</button>
+
+
+            <button class="toggle">Toggle Highlight</button>
+
+        </div>
+
+    </div>
+    <script>
+
+        let show = document.querySelector(".show");
+        let input = document.querySelector(".input");
+        let clear = document.querySelector(".clear");
+        let upper = document.querySelector(".upper");
+        let toggle = document.querySelector(".toggle");
+
+        let p = document.querySelector("p");
+
+        function showfun() {
+
+            p.innerText = input.value;
+        }
+        show.addEventListener("click", showfun);
+
+        function clearfun() {
+            p.innerText = "";
+        }
+        clear.addEventListener("click", clearfun);
+
+        function upperfun() {
+            p.innerText = p.innerText.toUpperCase();
+        }
+        upper.addEventListener("click", upperfun);
+
+        function togglefun() {
+
+            if (p.style.backgroundColor === "yellow") {
+                p.style.backgroundColor = "";
+            }
+            else {
+                p.style.backgroundColor = "yellow";
+            }
+        }
+        toggle.addEventListener("click", togglefun);
+    </script>
+
+</body>
+
+</html>
