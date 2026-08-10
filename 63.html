@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 700px;
+            background-color: white;
+            padding: 50px;
+            text-align: center;
+            border-radius: 5px;
+
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 60px;
+            color: #2563eb;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        button {
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .start {
+            background-color: #22c55e;
+        }
+
+        .stop {
+            background-color: #ef4444;
+        }
+
+        .resume {
+            background-color: #f59e0b;
+        }
+
+        .reset {
+            background-color: #6b7280;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Counter App</h1>
+
+        <h2>0</h2>
+
+        <div class="buttons">
+            <button class="start">Start</button>
+            <button class="stop">Stop</button>
+            <button class="resume">Resume</button>
+            <button class="reset">Reset</button>
+        </div>
+
+    </div>
+
+    <script>
+
+        let count = 0;
+        let clock = null;
+
+        function update() {
+            let h2 = document.querySelector("h2");
+            h2.innerText = count;
+        }
+
+        function startfun() {
+
+            interval = setInterval(() => {
+
+                count += 1;
+                update();
+
+
+            }, 1000)
+        }
+
+        let start = document.querySelector(".start");
+        start.addEventListener("click", startfun);
+
+        function stopfun() {
+
+            clearInterval(interval);
+
+
+        }
+        let stop = document.querySelector(".stop");
+        stop.addEventListener("click", stopfun);
+
+        function resetfun() {
+
+            count = 0;
+            update();
+            clearInterval(interval);
+        }
+
+        let reset = document.querySelector(".reset");
+        reset.addEventListener("click", resetfun);
+
+        function resumefun() {
+
+            if (interval != null) {
+                startfun();
+            }
+
+            return;
+        }
+
+        let resume = document.querySelector(".resume");
+        resume.addEventListener("click", resumefun)
+    </script>
+</body>
+
+</html>
