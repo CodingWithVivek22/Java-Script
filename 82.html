@@ -1,0 +1,163 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Form Validation</title>
+
+    <style>
+        body {
+            background-color: rgb(176, 176, 176);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #form {
+
+            background-color: white;
+            padding: 50px;
+            border-radius: 20px;
+        }
+
+        input {
+            width: 300px;
+            height: 30px;
+
+            border-radius: 20px;
+        }
+
+        .field label {
+
+            display: block;
+
+        }
+
+        p {
+            color: red;
+            background-color: rgba(255, 0, 0, 0.199);
+
+            border-radius: 20px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="form">
+
+        <div class="field">
+            <h1>Form Validation</h1>
+
+        </div>
+
+        <div class="field">
+            <label for="username"> Username : </label>
+            <input type="text" name="username" id="username" placeholder="vivek">
+
+            <p class="error" id="username_error"></p>
+        </div>
+
+
+        <div class="field">
+            <label for="email">Email : </label>
+            <input type="text" name="email" id="email" placeholder="vivek@gmail.com">
+            <p class="error" id="email_error"></p>
+        </div>
+
+        <div class="field">
+            <label for="password">Password : </label>
+            <input type="password" name="password" id="password" placeholder="123***56">
+            <p class="error" id="password_error"></p>
+        </div>
+
+
+
+        <button>Registration</button>
+
+    </form>
+
+    <script>
+        let form = document.querySelector("#form");
+
+        let isvalid = false;
+
+        form.addEventListener("submit", (e) => {
+
+            e.preventDefault();
+
+            let username = document.querySelector("#username");
+            let email = document.querySelector("#email");
+            let password = document.querySelector("#password");
+
+            let username_error = document.querySelector("#username_error");
+            let email_error = document.querySelector("#email_error");
+            let password_error = document.querySelector("#password_error");
+
+
+            // Username
+            if (username.value.trim() == "") {
+
+                username_error.innerHTML = "Please enter name first";
+                username.classList.add("invalid");
+
+                return;
+            }
+
+            if (username.value.trim().length < 3) {
+
+                username_error.innerHTML = "Error : Username too short";
+                username.classList.add("invalid");
+
+                return;
+            }
+
+            username_error.innerHTML = "";
+            username.classList.remove("invalid");
+
+
+            // Email
+            if (!email.value.includes("@")) {
+
+                email_error.innerHTML = "Error : Email should contain '@'";
+                email.classList.add("invalid");
+
+                return;
+            }
+
+            email_error.innerHTML = "";
+            email.classList.remove("invalid");
+
+
+            // Password
+            if (password.value.length < 8) {
+
+                password_error.innerHTML = "Password error";
+                password.classList.add("invalid");
+
+                return;
+            }
+
+            password_error.innerHTML = "";
+            password.classList.remove("invalid");
+
+
+            // Everything is valid
+            isvalid = true;
+
+            if (isvalid == true) {
+
+                alert("Registration successful!");
+            }
+
+        });
+
+
+    </script>
+</body>
+
+</html>
